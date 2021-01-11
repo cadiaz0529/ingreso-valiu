@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  etl:
+    build: ./etl
+    depends_on:
+      - mysql-db
+      - postgres-db
+      - mongo-db
+    env_file: .env
+  mysql-db:
+    image: mysql:5.7
+    restart: always
+    container_name: mysql-db
+    env_file: .env
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+  postgres-db:
+    image: postgres
+    restart: always
+    container_name: postgres-db
+    env_file: .env
+    ports:
+      - '5432:5432'
+    expose:
+      - '5432'
+  mongo-db:
+    image: mongo
+    restart: always
+    container_name: mongo-db
+    env_file: .env
+    ports:
+      - '27017:27017'
+    expose:
+      - '27017'
