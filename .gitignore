@@ -1,2 +1,2 @@
-data/*
-.env
+# El .env se comenta para que puedan hacer pruebas
+# .env
